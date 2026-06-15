@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curso Completo de Python desde Cero</title>
+
+  <!-- Tipografías: Space Grotesk para títulos, Inter para texto, JetBrains Mono para código -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============ BOTÓN DE MODO OSCURO Y BARRA DE PROGRESO ============ -->
+  <div class="progress-rail">
+    <div class="progress-rail__track">
+      <div class="progress-rail__fill" id="progressFill"></div>
+    </div>
+    <span class="progress-rail__label" id="progressLabel">0% completado</span>
+  </div>
+
+  <!-- ============ NAVEGACIÓN ============ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#inicio" class="nav__brand">
+        <span class="nav__brand-icon">🐍</span>
+        <span class="nav__brand-text">Python<span class="nav__brand-accent">.curso</span></span>
+      </a>
+
+      <nav class="nav__links" id="navLinks">
+        <a href="#inicio" class="nav__link">Inicio</a>
+        <a href="#que-es-python" class="nav__link">¿Qué es Python?</a>
+        <a href="#variables" class="nav__link">Variables</a>
+        <a href="#operadores" class="nav__link">Operadores</a>
+        <a href="#condicionales" class="nav__link">Condicionales</a>
+        <a href="#ciclos" class="nav__link">Ciclos</a>
+        <a href="#funciones" class="nav__link">Funciones</a>
+        <a href="#listas" class="nav__link">Listas</a>
+        <a href="#diccionarios" class="nav__link">Diccionarios</a>
+        <a href="#ejercicios" class="nav__link">Ejercicios</a>
+        <a href="#quiz" class="nav__link">Quiz</a>
+        <a href="#contacto" class="nav__link">Contacto</a>
+      </nav>
+
+      <div class="nav__actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Cambiar modo claro/oscuro" title="Cambiar modo claro/oscuro">
+          <span class="theme-toggle__icon" id="themeIcon">🌙</span>
+        </button>
+        <button class="nav__burger" id="navBurger" aria-label="Abrir menú">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="inicio">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__blob hero__blob--1"></div>
+        <div class="hero__blob hero__blob--2"></div>
+      </div>
+
+      <div class="hero__inner">
+        <div class="hero__content fade-in">
+          <p class="eyebrow">Para quienes nunca han programado</p>
+          <h1 class="hero__title">Curso Completo de <span class="text-accent">Python</span> desde Cero</h1>
+          <p class="hero__subtitle">
+            Aprende Python paso a paso con explicaciones detalladas, ejemplos prácticos
+            y ejercicios interactivos. Sin tecnicismos, sin prisas, a tu propio ritmo.
+          </p>
+          <div class="hero__actions">
+            <button class="btn btn--primary" id="startCourseBtn">Comenzar Curso</button>
+            <a href="#que-es-python" class="btn btn--ghost">¿Qué es Python?</a>
+          </div>
+
+          <div class="hero__stats">
+            <div class="hero__stat">
+              <span class="hero__stat-num">10</span>
+              <span class="hero__stat-label">Lecciones guiadas</span>
+            </div>
+            <div class="hero__stat">
+              <span class="hero__stat-num">20</span>
+              <span class="hero__stat-label">Ejercicios prácticos</span>
+            </div>
+            <div class="hero__stat">
+              <span class="hero__stat-num">15</span>
+              <span class="hero__stat-label">Preguntas de quiz</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Elemento distintivo: terminal animada que "escribe" código Python -->
+        <div class="hero__terminal fade-in" aria-hidden="true">
+          <div class="terminal">
+            <div class="terminal__bar">
+              <span class="terminal__dot terminal__dot--red"></span>
+              <span class="terminal__dot terminal__dot--yellow"></span>
+              <span class="terminal__dot terminal__dot--green"></span>
+              <span class="terminal__title">primer_programa.py</span>
+            </div>
+            <pre class="terminal__body"><code id="terminalCode"></code><span class="terminal__cursor"></span></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SECCIÓN 1: ¿QUÉ ES PYTHON? ============ -->
+    <section class="section" id="que-es-python">
+      <div class="container">
+        <p class="eyebrow">Lección 1</p>
+        <h2 class="section__title">¿Qué es Python?</h2>
+        <p class="section__lead">
+          Python es un lenguaje de programación creado para que escribir código sea
+          algo claro, ordenado y fácil de leer, casi como escribir en inglés sencillo.
+          Por eso es el lenguaje favorito para empezar a programar.
+        </p>
+
+        <div class="grid grid--2 align-center">
+          <div class="fade-in">
+            <h3 class="h3">Un poco de historia</h3>
+            <p>
+              Python fue creado por <strong>Guido van Rossum</strong>, un programador
+              neerlandés, y se publicó por primera vez en el año <strong>1991</strong>.
+              Guido quería un lenguaje que fuera divertido de usar (de hecho, el nombre
+              "Python" viene del programa de comedia británico "Monty Python's Flying
+              Circus", no de la serpiente).
+            </p>
+            <p>
+              Desde entonces, Python ha crecido muchísimo y hoy es uno de los lenguajes
+              de programación más usados en el mundo, tanto por principiantes como por
+              grandes empresas como Google, Netflix, Spotify e Instagram.
+            </p>
+
+            <h3 class="h3">¿Para qué sirve Python?</h3>
+            <p>
+              Python sirve para crear casi cualquier tipo de programa: páginas web,
+              aplicaciones, juegos, herramientas que automatizan tareas repetitivas,
+              y programas que analizan grandes cantidades de información. Su sintaxis
+              simple permite que una persona sin experiencia pueda escribir su primer
+              programa en minutos.
+            </p>
+          </div>
+
+          <div class="fade-in">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg"
+              alt="Logo de Python: dos serpientes entrelazadas, una azul y una amarilla"
+              class="rounded-img"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <h3 class="h3 mt-lg">¿Dónde se utiliza Python?</h3>
+        <p class="section__lead">
+          Estas son algunas de las áreas donde más se usa Python hoy en día:
+        </p>
+
+        <div class="grid grid--cards">
+          <article class="card fade-in">
+            <div class="card__icon">🌐</div>
+            <h4 class="card__title">Desarrollo web</h4>
+            <p class="card__text">
+              Con herramientas como Django o Flask, Python permite crear sitios y
+              aplicaciones web completas, desde el lado del servidor.
+            </p>
+          </article>
+
+          <article class="card fade-in">
+            <div class="card__icon">🤖</div>
+            <h4 class="card__title">Inteligencia artificial</h4>
+            <p class="card__text">
+              Python es el lenguaje preferido para crear modelos de inteligencia
+              artificial y aprendizaje automático, gracias a librerías como
+              TensorFlow y PyTorch.
+            </p>
+          </article>
+
+          <article class="card fade-in">
+            <div class="card__icon">📊</div>
+            <h4 class="card__title">Ciencia de datos</h4>
+            <p class="card__text">
+              Permite analizar, ordenar y visualizar grandes cantidades de datos
+              para encontrar patrones y tomar mejores decisiones.
+            </p>
+          </article>
+
+          <article class="card fade-in">
+            <div class="card__icon">⚙️</div>
+            <h4 class="card__title">Automatización</h4>
+            <p class="card__text">
+              Ideal para crear scripts que hacen tareas repetitivas de forma
+              automática, como organizar archivos o enviar correos.
+            </p>
+          </article>
+
+          <article class="card fade-in">
+            <div class="card__icon">🎮</div>
+            <h4 class="card__title">Videojuegos</h4>
+            <p class="card__text">
+              Con librerías como Pygame se pueden crear videojuegos sencillos en 2D,
+              ideales para aprender lógica de programación.
+            </p>
+          </article>
+        </div>
+
+        <h3 class="h3 mt-lg">Línea del tiempo de Python</h3>
+        <div class="timeline fade-in">
+          <div class="timeline__item">
+            <div class="timeline__dot"></div>
+            <div class="timeline__content">
+              <span class="timeline__year">1989</span>
+              <p>Guido van Rossum comienza a trabajar en Python como proyecto personal durante las vacaciones de Navidad.</p>
+            </div>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__dot"></div>
+            <div class="timeline__content">
+              <span class="timeline__year">1991</span>
+              <p>Se publica la primera versión oficial de Python (0.9.0).</p>
+            </div>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__dot"></div>
+            <div class="timeline__content">
+              <span class="timeline__year">2000</span>
+              <p>Se lanza Python 2.0, con mejoras importantes en el manejo de memoria.</p>
+            </div>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__dot"></div>
+            <div class="timeline__content">
+              <span class="timeline__year">2008</span>
+              <p>Se lanza Python 3.0, la versión moderna que se sigue usando y mejorando hoy.</p>
+            </div>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__dot"></div>
+            <div class="timeline__content">
+              <span class="timeline__year">Hoy</span>
+              <p>Python es uno de los lenguajes más populares del mundo, usado en miles de empresas y proyectos.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SECCIÓN 2: VARIABLES ============ -->
+    <section class="section section--alt" id="variables">
+      <div class="container">
+        <p class="eyebrow">Lección 2</p>
+        <h2 class="section__title">Variables</h2>
+        <p class="section__lead">
+          Una variable es como una <strong>caja con una etiqueta</strong> donde guardamos
+          información para usarla más adelante. Le damos un nombre a esa caja y dentro
+          guardamos un valor: un número, un texto, etc.
+        </p>
+
+        <div class="grid grid--2 align-center">
+          <div class="fade-in">
+            <h3 class="h3">¿Cómo se declara una variable?</h3>
+            <p>
+              En Python, declarar una variable es muy sencillo: solo escribes el
+              nombre que quieras darle, el signo <code class="inline-code">=</code>
+              (que significa "asignar", no "es igual a") y el valor que quieres
+              guardar.
+            </p>
+            <p>
+              No necesitas indicar de qué tipo es la variable. Python lo detecta
+              automáticamente según el valor que le das.
+            </p>
+
+            <h3 class="h3">Tipos de datos básicos</h3>
+            <ul class="list">
+              <li><span class="tag tag--blue">int</span> Números enteros, sin decimales. Ejemplo: <code class="inline-code">20</code></li>
+              <li><span class="tag tag--yellow">float</span> Números con decimales. Ejemplo: <code class="inline-code">1.75</code></li>
+              <li><span class="tag tag--green">string</span> Texto, siempre entre comillas. Ejemplo: <code class="inline-code">"Juan"</code></li>
+              <li><span class="tag tag--purple">bool</span> Valores de verdadero o falso. Ejemplo: <code class="inline-code">True</code></li>
+            </ul>
+          </div>
+
+          <div class="fade-in">
+            <img
+              src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=900&q=80"
+              alt="Pantalla de computadora mostrando líneas de código de programación"
+              class="rounded-img"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <!-- Editor de código interactivo -->
+        <div class="code-block fade-in">
+          <div class="code-block__header">
+            <span class="code-block__label">Ejemplo: Variables en Python</span>
+          </div>
+          <pre class="code-block__pre"><code id="codeVariables">nombre = "Juan"
+edad = 20
+altura = 1.75
+estudiante = True
+
+print(nombre)
+print(edad)
+print(altura)
+print(estudiante)</code></pre>
+          <div class="code-block__footer">
+            <button class="btn btn--small btn--primary" data-run="codeVariables" data-output="outputVariables">▶ Ejecutar ejemplo</button>
+          </div>
+          <div class="code-output" id="outputVariables">
+            <span class="code-output__placeholder">El resultado aparecerá aquí...</span>
+          </div>
+        </div>
+
+        <div class="callout fade-in">
+          <strong>💡 Explicación línea por línea:</strong>
+          <p>
+            Las primeras cuatro líneas crean variables: <code class="inline-code">nombre</code>
+            guarda el texto "Juan", <code class="inline-code">edad</code> guarda el número 20,
+            <code class="inline-code">altura</code> guarda el número decimal 1.75, y
+            <code class="inline-code">estudiante</code> guarda el valor booleano True (verdadero).
+            Las últimas cuatro líneas usan <code class="inline-code">print()</code> para
+            mostrar en pantalla el contenido de cada variable.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SECCIÓN 3: OPERADORES ============ -->
+    <section class="section" id="operadores">
+      <div class="container">
+        <p class="eyebrow">Lección 3</p>
+        <h2 class="section__title">Operadores</h2>
+        <p class="section__lead">
+          Los operadores son símbolos que le indican a Python qué operación realizar
+          con los valores: sumar, comparar, combinar condiciones, etc. Existen tres
+          grupos principales: aritméticos, relacionales y lógicos.
+        </p>
+
+        <h3 class="h3">Operadores aritméticos</h3>
+        <p>Se usan para hacer cálculos matemáticos.</p>
+
+        <div class="table-wrap fade-in">
+          <table class="table">
+            <thead>
+              <tr><th>Operador</th><th>Nombre</th><th>Ejemplo</th><th>Resultado</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code class="inline-code">+</code></td><td>Suma</td><td><code class="inline-code">10 + 3</code></td><td>13</td></tr>
+              <tr><td><code class="inline-code">-</code></td><td>Resta</td><td><code class="inline-code">10 - 3</code></td><td>7</td></tr>
+              <tr><td><code class="inline-code">*</code></td><td>Multiplicación</td><td><code class="inline-code">10 * 3</code></td><td>30</td></tr>
+              <tr><td><code class="inline-code">/</code></td><td>División (con decimales)</td><td><code class="inline-code">10 / 3</code></td><td>3.333...</td></tr>
+              <tr><td><code class="inline-code">%</code></td><td>Módulo (resto de la división)</td><td><code class="inline-code">10 % 3</code></td><td>1</td></tr>
+              <tr><td><code class="inline-code">**</code></td><td>Potencia</td><td><code class="inline-code">10 ** 2</code></td><td>100</td></tr>
+              <tr><td><code class="inline-code">//</code></td><td>División entera (sin decimales)</td><td><code class="inline-code">10 // 3</code></td><td>3</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="code-block fade-in">
+          <div class="code-block__header">
+            <span class="code-block__label">Ejemplo: Operadores aritméticos</span>
+          </div>
+          <pre class="code-block__pre"><code id="codeAritmeticos">a = 10
+b = 3
+
+print(a + b)
+print(a * b)
+print(a // b)</code></pre>
+          <div class="code-block__footer">
+            <button class="btn btn--small btn--primary" data-run="codeAritmeticos" data-output="outputAritmeticos">▶ Ejecutar ejemplo</button>
+          </div>
+          <div class="code-output" id="outputAritmeticos">
+            <span class="code-output__placeholder">El resultado aparecerá aquí...</span>
+          </div>
+        </div>
+
+        <h3 class="h3 mt-lg">Operadores relacionales</h3>
+        <p>
+          Se usan para <strong>comparar</strong> dos valores. El resultado siempre es
+          <code class="inline-code">True</code> (verdadero) o
+          <code class="inline-code">False</code> (falso).
+        </p>
+
+        <div class="table-wrap fade-in">
+          <table class="table">
+            <thead>
+              <tr><th>Operador</th><th>Significado</th><th>Ejemplo</th><th>Resultado</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code class="inline-code">==</code></td><td>Igual a</td><td><code class="inline-code">5 == 5</code></td><td>True</td></tr>
+              <tr><td><code class="inline-code">!=</code></td><td>Diferente de</td><td><code class="inline-code">5 != 3</code></td><td>True</td></tr>
+              <tr><td><code class="inline-code">&lt;</code></td><td>Menor que</td><td><code class="inline-code">3 &lt; 5</code></td><td>True</td></tr>
+              <tr><td><code class="inline-code">&gt;</code></td><td>Mayor que</td><td><code class="inline-code">3 &gt; 5</code></td><td>False</td></tr>
+              <tr><td><code class="inline-code">&lt;=</code></td><td>Menor o igual que</td><td><code class="inline-code">5 &lt;= 5</code></td><td>True</td></tr>
+              <tr><td><code class="inline-code">&gt;=</code></td><td>Mayor o igual que</td><td><code class="inline-code">4 &gt;= 5</code></td><td>False</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="code-block fade-in">
+          <div class="code-block__header">
+            <span class="code-block__label">Ejemplo: Operadores relacionales</span>
+          </div>
+          <pre class="code-block__pre"><code id="codeRelacionales">edad1 = 18
+edad2 = 25
+
+print(edad1 == edad2)
+print(edad1 != edad2)
+print(edad1 < edad2)
+print(edad1 >= edad2)</code></pre>
+          <div class="code-block__footer">
+            <button class="btn btn--small btn--primary" data-run="codeRelacionales" data-output="outputRelacionales">▶ Ejecutar ejemplo</button>
+          </div>
+          <div class="code-output" id="outputRelacionales">
+            <span class="code-output__placeholder">El resultado aparecerá aquí...</span>
+          </div>
+        </div>
+
+        <h3 class="h3 mt-lg">Operadores lógicos</h3>
+        <p>
+          Se usan para combinar varias condiciones a la vez:
+          <code class="inline-code">and</code> (y), <code class="inline-code">or</code> (o)
+          y <code class="inline-code">not</code> (negación).
+        </p>
+
+        <div class="grid grid--3 fade-in">
+          <div class="table-wrap">
+            <table class="table table--small">
+              <thead><tr><th colspan="3">and (verdadero solo si ambas son verdaderas)</th></tr><tr><th>A</th><th>B</th><th>A and B</th></tr></thead>
+              <tbody>
+                <tr><td>True</td><td>True</td><td>True</td></tr>
+                <tr><td>True</td><td>False</td><td>False</td></tr>
+                <tr><td>False</td><td>True</td><td>False</td></tr>
+                <tr><td>False</td><td>False</td><td>False</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-wrap">
+            <table class="table table--small">
+              <thead><tr><th colspan="3">or (verdadero si al menos una es verdadera)</th></tr><tr><th>A</th><th>B</th><th>A or B</th></tr></thead>
+              <tbody>
+                <tr><td>True</td><td>True</td><td>True</td></tr>
+                <tr><td>True</td><td>False</td><td>True</td></tr>
+                <tr><td>False</td><td>True</td><td>True</td></tr>
+                <tr><td>False</td><td>False</td><td>False</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-wrap">
+            <table class="table table--small">
+              <thead><tr><th colspan="2">not (invierte el valor)</th></tr><tr><th>A</th><th>not A</th></tr></thead>
+              <tbody>
+                <tr><td>True</td><td>False</td></tr>
+                <tr><td>False</td><td>True</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SECCIÓN 4: CONDICIONALES ============ -->
+    <section class="section section--alt" id="condicionales">
+      <div class="container">
+        <p class="eyebrow">Lección 4</p>
+        <h2 class="section__title">Condicionales</h2>
+        <p class="section__lead">
+          Los condicionales permiten que un programa <strong>tome decisiones</strong>.
+          Con <code class="inline-code">if</code>, <code class="inline-code">elif</code>
+          y <code class="inline-code">else</code>, le decimos a Python: "si se cumple
+          esto, haz esto; si no, haz aquello".
+        </p>
+
+        <div class="grid grid--2 align-center">
+          <div class="fade-in">
+            <h3 class="h3">¿Cómo funciona?</h3>
+            <ul class="list">
+              <li><code class="inline-code">if</code> — se ejecuta si la condición es verdadera.</li>
+              <li><code class="inline-code">elif</code> — significa "si no, y si esto otro es verdadero..." (puede haber varios).</li>
+              <li><code class="inline-code">else</code> — se ejecuta si ninguna condición anterior fue verdadera.</li>
+            </ul>
+            <p>
+              Algo muy importante en Python: el bloque de código dentro de un
+              <code class="inline-code">if</code> debe estar
+              <strong>indentado</strong> (con espacios o tabulación). Esa indentación
+              es lo que le indica a Python qué líneas pertenecen al bloque.
+            </p>
+          </div>
+          <div class="fade-in">
+            <img
+              src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=900&q=80"
+              alt="Ilustración abstracta de algoritmos y diagramas de flujo en una pantalla"
+              class="rounded-img"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <!-- Diagrama de flujo simple en SVG -->
+        <div class="flowchart fade-in">
+          <div class="flowchart__box flowchart__box--start">Inicio</div>
+          <div class="flowchart__arrow">↓</div>
+          <div class="flowchart__box flowchart__box--decision">¿edad &gt;= 18?</div>
+          <div class="flowchart__branches">
+            <div class="flowchart__branch">
+              <span class="flowchart__branch-label">Sí</span>
+              <div class="flowchart__arrow">↓</div>
+              <div class="flowchart__box">Imprimir "Eres mayor de edad"</div>
+            </div>
+            <div class="flowchart__branch">
+              <span class="flowchart__branch-label">No</span>
+              <div class="flowchart__arrow">↓</div>
+              <div class="flowchart__box">Imprimir "Eres menor de edad"</div>
+            </div>
+          </div>
+          <div class="flowchart__arrow">↓</div>
+          <div class="flowchart__box flowchart__box--end">Fin</div>
+        </div>
+
+        <div class="code-block fade-in">
+          <div class="code-block__header">
+            <span class="code-block__label">Ejemplo: Condicional if / else</span>
+          </div>
+          <pre class="code-block__pre"><code id="codeCondicionales">edad = 18
+
+if edad >= 18:
+    print("Eres mayor de edad")
+else:
+    print("Eres menor de edad")</code></pre>
+          <div class="code-block__footer">
+            <button class="btn btn--small btn--primary" data-run="codeCondicionales" data-output="outputCondicionales">▶ Ejecutar ejemplo</button>
+          </div>
+          <div class="code-output" id="outputCondicionales">
+            <span class="code-output__placeholder">El resultado aparecerá aquí...</span>
+          </div>
+        </div>
+
+        <div class="callout fade-in">
+          <strong>💡 Explicación línea por línea:</strong>
+          <p>
+            La línea 1 crea la variable <code class="inline-code">edad</code> con el
+            valor 18. La línea 3 pregunta: "¿edad es mayor o igual a 18?". Como 18
+            es igual a 18, la condición es <code class="inline-code">True</code>, así
+            que se ejecuta la línea 4 y se imprime "Eres mayor de edad". Si la edad
+            hubiera sido menor a 18, se habría ejecutado el bloque
+            <code class="inline-code">else</code> en su lugar.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SECCIÓN 5: CICLOS ============ -->
+    <section class="section" id="ciclos">
+      <div class="container">
+        <p class="eyebrow">Lección 5</p>
+        <h2 class="section__title">Ciclos (bucles)</h2>
+        <p class="section__lead">
+          Los ciclos permiten <strong>repetir</strong> una acción varias veces sin
+          tener que escribir el mismo código una y otra vez. Python tiene dos tipos
+          principales: <code class="inline-code">for</code> y
+          <code class="inline-code">while</code>.
+        </p>
+
+        <h3 class="h3">Ciclo for</h3>
+        <p>
+          El ciclo <code class="inline-code">for</code> se usa cuando sabemos
+          exactamente cuántas veces queremos repetir algo, o cuando queremos recorrer
+          los elementos de una lista, texto, etc.
+        </p>
+
+        <div class="code-block fade-in">
+          <div class="code-block__header">
+            <span class="code-block__label">Ejemplo: Ciclo for</span>
+          </div>
+          <pre class="code-block__pre"><code id="codeFor">for i in range(5):
+    print(i)</code></pre>
+          <div class="code-block__footer">
+            <button class="btn btn--small btn--primary" data-run="codeFor" data-output="outputFor">▶ Ejecutar ejemplo</button>
+          </div>
+          <div class="code-output" id="outputFor">
+            <span class="code-output__placeholder">El resultado aparecerá aquí...</span>
+          </div>
+        </div>
+
+        <div class="callout fade-in">
+          <strong>💡 Explicación línea por línea:</strong>
+          <p>
+            <code class="inline-code">range(5)</code> genera una secuencia de números
+            del 0 al 4 (5 números en total, pero empezando desde 0). La variable
+            <code class="inline-code">i</code> toma, uno por uno, cada valor de esa
+            secuencia: primero 0, luego 1, luego 2, y así hasta 4. En cada repetición,
+            <code class="inline-code">print(i)</code> muestra el valor actual de
+            <code class="inline-code">i</code>.
+          </p>
+        </div>
+
+        <h3 class="h3 mt-lg">Ciclo while</h3>
+        <p>
+          El ciclo <code class="inline-code">while</code> repite un bloque de código
+          <strong>mientras</strong> una condición sea verdadera. Es útil cuando no
+          sabemos de antemano cuántas veces se va a repetir.
+        </p>
+
+        <div class="code-block fade-in">
+          <div class="code-block__header">
+            <span class="code-block__label">Ejemplo: Ciclo while</span>
+          </div>
+          <pre class="code-block__pre"><code id="codeWhile">contador = 0
+
+while contador < 5:
+    print(contador)
+    contador += 1</code></pre>
+          <div class="code-block__footer">
+            <button class="btn btn--small btn--primary" data-run="codeWhile" data-output="outputWhile">▶ Ejecutar ejemplo</button>
+          </div>
+          <div class="code-output" id="outputWhile">
+            <span class="code-output__placeholder">El resultado aparecerá aquí...</span>
+          </div>
+        </div>
+
+        <!-- Animación de variable cambiando -->
+        <div class="trace fade-in">
+          <p class="trace__title">🔄 Así cambia la variable "contador" en cada repetición:</p>
+          <div class="trace__steps" id="whileTrace">
+            <div class="trace__step active">contador = 0 → se imprime 0 → contador += 1</div>
+            <div class="trace__step">contador = 1 → se imprime 1 → contador += 1</div>
+            <div class="trace__step">contador = 2 → se imprime 2 → contador += 1</div>
+            <div class="trace__step">contador = 3 → se imprime 3 → contador += 1</div>
+            <div class="trace__step">contador = 4 → se imprime 4 → contador += 1</div>
+            <div class="trace__step">contador = 5 → la condición (5 &lt; 5) es False → el ciclo termina</div>
+          </div>
+        </div>
+
+        <div class="callout fade-in">
+          <strong>💡 Explicación paso a paso:</strong>
+          <p>
+            <code class="inline-code">contador = 0</code> crea la variable con valor
+            inicial 0. La condición <code class="inline-code">contador &lt; 5</code> se
+            revisa antes de cada repetición. Mientras sea verdadera, se ejecuta el
+            bloque: se imprime el valor actual y luego
+            <code class="inline-code">contador += 1</code> le suma 1. Cuando
+            <code class="inline-code">contador</code> llega a 5, la condición se vuelve
+            falsa y el ciclo se detiene.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SECCIÓN 6: FUNCIONES ============ -->
+    <section class="section section--alt" id="funciones">
+      <div class="container">
+        <p class="eyebrow">Lección 6</p>
+        <h2 class="section__title">Funciones</h2>
+        <p class="section__lead">
+          Una función es un <strong>bloque de código reutilizable</strong> que realiza
+          una tarea específica. En lugar de repetir el mismo código varias veces,
+          lo escribimos una vez dentro de una función y la "llamamos" cuando la
+          necesitamos.
+        </p>
+
+        <div class="grid grid--2 align-center">
+          <div class="fade-in">
+            <h3 class="h3">Partes de una función</h3>
+            <ul class="list">
+              <li><strong>def</strong> — palabra que indica que vamos a crear (definir) una función.</li>
+              <li><strong>Nombre</strong> — el nombre que le damos a la función, como <code class="inline-code">suma</code>.</li>
+              <li><strong>Parámetros</strong> — valores que la función recibe para trabajar, escritos entre paréntesis.</li>
+              <li><strong>return</strong> — palabra que indica el valor que la función devuelve como resultado.</li>
+            </ul>
+          </div>
+          <div class="fade-in">
+            <img
+              src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=900&q=80"
+              alt="Persona programando en una laptop con código en pantalla"
+              class="rounded-img"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <div class="code-block fade-in">
+          <div class="code-block__header">
+            <span class="code-block__label">Ejemplo: Función suma</span>
+          </div>
+          <pre class="code-block__pre" id="funcCodePre"><code id="codeFuncion"><span class="hoverline" data-explain="def indica que estamos creando una función llamada 'suma', que recibe dos parámetros: a y b.">def suma(a,b):</span>
+<span class="hoverline" data-explain="Esta línea calcula a + b y usa 'return' para devolver ese resultado como salida de la función.">    return a+b</span>
+<span class="hoverline" data-explain="Aquí 'llamamos' a la función suma, le pasamos los valores 5 y 3, y guardamos lo que devuelve en la variable 'resultado'.">resultado = suma(5,3)</span>
+<span class="hoverline" data-explain="Finalmente imprimimos el valor guardado en 'resultado', que será 8.">print(resultado)</span></code></pre>
+          <div class="code-block__footer">
+            <button class="btn btn--small btn--primary" data-run="codeFuncion" data-output="outputFuncion">▶ Ejecutar ejemplo</button>
+          </div>
+          <div class="code-output" id="outputFuncion">
+            <span class="code-output__placeholder">El resultado aparecerá aquí...</span>
+          </div>
+          <p class="code-block__hint">👆 Pasa el cursor sobre cada línea de código para ver su explicación.</p>
+          <div class="hover-explanation" id="hoverExplanation">Pasa el cursor sobre una línea de código para ver la explicación aquí.</div>
+        </div>
+
+        <!-- Simulador interactivo de función -->
+        <div class="simulator fade-in">
+          <h3 class="h3">🧪 Simulador interactivo: función suma</h3>
+          <p>Elige dos valores para <code class="inline-code">a</code> y <code class="inline-code">b</code> y observa cómo la función calcula el resultado.</p>
+          <div class="simulator__controls">
+            <label class="simulator__field">
+              a = <input type="number" id="simA" value="5" />
+            </label>
+            <label class="simulator__field">
+              b = <input type="number" id="simB" value="3" />
+            </label>
+            <button class="btn btn--small btn--primary" id="simRun">▶ Calcular suma(a, b)</button>
+          </div>
+          <div class="simulator__result" id="simResult">
+            <code>resultado = suma(a, b)</code> → presiona "Calcular" para ver el resultado.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SECCIÓN 7: LISTAS ============ -->
+    <section class="section" id="listas">
+      <div class="container">
+        <p class="eyebrow">Lección 7</p>
+        <h2 class="section__title">Listas</h2>
+        <p class="section__lead">
+          Una lista es una <strong>colección ordenada de elementos</strong> guardados
+          en una sola variable. Se escriben entre corchetes
+          <code class="inline-code">[ ]</code> y los elementos se separan con comas.
+        </p>
+
+        <div class="code-block fade-in">
+          <div class="code-block__header">
+            <span class="code-block__label">Ejemplo: Crear una lista</span>
+          </div>
+          <pre class="code-block__pre"><code>frutas = ["manzana","pera","uva"]
+print(frutas)</code></pre>
+        </div>
+
+        <h3 class="h3">Funciones más usadas con listas</h3>
+        <div class="grid grid--cards">
+          <article class="card fade-in">
+            <div class="card__icon">➕</div>
+            <h4 class="card__title"><code class="inline-code">append()</code></h4>
+            <p class="card__text">Agrega un elemento <strong>al final</strong> de la lista.</p>
+          </article>
+          <article class="card fade-in">
+            <div class="card__icon">📍</div>
+            <h4 class="card__title"><code class="inline-code">insert()</code></h4>
+            <p class="card__text">Agrega un elemento en una <strong>posición específica</strong>.</p>
+          </article>
+          <article class="card fade-in">
+            <div class="card__icon">🗑️</div>
+            <h4 class="card__title"><code class="inline-code">remove()</code></h4>
+            <p class="card__text">Elimina la <strong>primera coincidencia</strong> de un valor.</p>
+          </article>
+          <article class="card fade-in">
+            <div class="card__icon">📤</div>
+            <h4 class="card__title"><code class="inline-code">pop()</code></h4>
+            <p class="card__text">Elimina y devuelve el <strong>último elemento</strong> (o uno por posición).</p>
+          </article>
+          <article class="card fade-in">
+            <div class="card__icon">📏</div>
+            <h4 class="card__title"><code class="inline-code">len()</code></h4>
+            <p class="card__text">Devuelve <strong>cuántos elementos</strong> tiene la lista.</p>
+          </article>
+        </div>
+
+        <!-- Demostrador interactivo de listas -->
+        <div class="simulator fade-in">
+          <h3 class="h3">🧪 Demostración interactiva</h3>
+          <p>La lista inicial es: <code class="inline-code">frutas = ["manzana", "pera", "uva"]</code>. Presiona los botones para ver cómo cambia.</p>
+
+          <div class="list-visual" id="listVisual">
+            <div class="list-visual__item">"manzana"</div>
+            <div class="list-visual__item">"pera"</div>
+            <div class="list-visual__item">"uva"</div>
+          </div>
+
+          <div class="simulator__controls">
+            <button class="btn btn--small btn--primary" data-list-action="append">frutas.append("mango")</button>
+            <button class="btn btn--small btn--primary" data-list-action="insert">frutas.insert(1, "kiwi")</button>
+            <button class="btn btn--small btn--primary" data-list-action="remove">frutas.remove("pera")</button>
+            <button class="btn btn--small btn--primary" data-list-action="pop">frutas.pop()</button>
+            <button class="btn btn--small btn--ghost" data-list-action="reset">Reiniciar lista</button>
+          </div>
+
+          <div class="simulator__result" id="listResult">
+            <code class="inline-code">len(frutas)</code> = <strong id="listLen">3</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SECCIÓN 8: DICCIONARIOS ============ -->
+    <section class="section section--alt" id="diccionarios">
+      <div class="container">
+        <p class="eyebrow">Lección 8</p>
+        <h2 class="section__title">Diccionarios</h2>
+        <p class="section__lead">
+          Un diccionario guarda información en pares de
+          <strong>clave : valor</strong>, como una ficha de datos. En lugar de acceder
+          a los elementos por su posición (como en una lista), accedemos a ellos por
+          su <strong>clave</strong>.
+        </p>
+
+        <div class="code-block fade-in">
+          <div class="code-block__header">
+            <span class="code-block__label">Ejemplo: Crear un diccionario</span>
+          </div>
+          <pre class="code-block__pre"><code>persona = {
+    "nombre": "Carlos",
+    "edad": 20,
+    "ciudad": "México"
+}</code></pre>
+        </div>
+
+        <div class="grid grid--2 align-center">
+          <div class="fade-in">
+            <h3 class="h3">Claves y valores</h3>
+            <p>
+              En el ejemplo anterior, <code class="inline-code">"nombre"</code>,
+              <code class="inline-code">"edad"</code> y
+              <code class="inline-code">"ciudad"</code> son las
+              <strong>claves</strong>. <code class="inline-code">"Carlos"</code>,
+              <code class="inline-code">20</code> y
+              <code class="inline-code">"México"</code> son sus
+              <strong>valores</strong> correspondientes.
+            </p>
+            <h3 class="h3">Operaciones comunes</h3>
+            <ul class="list">
+              <li><strong>Acceder:</strong> <code class="inline-code">persona["nombre"]</code> devuelve "Carlos".</li>
+              <li><strong>Agregar:</strong> <code class="inline-code">persona["pais"] = "México"</code> añade una nueva clave.</li>
+              <li><strong>Eliminar:</strong> <code class="inline-code">del persona["edad"]</code> elimina esa clave y su valor.</li>
+              <li><strong>Recorrer:</strong> con un ciclo <code class="inline-code">for clave in persona:</code> podemos pasar por todas las claves.</li>
+            </ul>
+          </div>
+          <div class="fade-in">
+            <img
+              src="https://images.unsplash.com/photo-1551033406-611cf9a28f67?auto=format&fit=crop&w=900&q=80"
+              alt="Ilustración de estructuras de datos y conexiones en una red"
+              class="rounded-img"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <!-- Tabla interactiva del diccionario -->
+        <div class="simulator fade-in">
+          <h3 class="h3">🧪 Tabla interactiva: persona</h3>
+          <div class="table-wrap">
+            <table class="table" id="dictTable">
+              <thead>
+                <tr><th>Clave</th><th>Valor</th><th></th></tr>
+              </thead>
+              <tbody>
+                <tr data-key="nombre"><td>"nombre"</td><td>"Carlos"</td><td></td></tr>
+                <tr data-key="edad"><td>"edad"</td><td>20</td><td><button class="btn btn--small btn--ghost" data-dict-action="delete" data-key="edad">del</button></td></tr>
+                <tr data-key="ciudad"><td>"ciudad"</td><td>"México"</td><td></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="simulator__controls">
+            <button class="btn btn--small btn--primary" id="dictAdd">persona["pais"] = "México"</button>
+            <button class="btn btn--small btn--ghost" id="dictReset">Reiniciar diccionario</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SECCIÓN 9: EJERCICIOS ============ -->
+    <section class="section" id="ejercicios">
+      <div class="container">
+        <p class="eyebrow">Lección 9</p>
+        <h2 class="section__title">Ejercicios prácticos</h2>
+        <p class="section__lead">
+          Pon en práctica todo lo aprendido. Para cada ejercicio, primero intenta
+          resolverlo tú mismo. Si te atascas, usa la pista. Y cuando quieras comprobar
+          tu respuesta, revisa la solución con su explicación.
+        </p>
+
+        <div class="exercises" id="exercisesContainer">
+          <!-- Los 20 ejercicios se generan dinámicamente desde script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SECCIÓN 10: QUIZ ============ -->
+    <section class="section section--alt" id="quiz">
+      <div class="container">
+        <p class="eyebrow">Lección 10</p>
+        <h2 class="section__title">Quiz interactivo</h2>
+        <p class="section__lead">
+          Responde las 15 preguntas para comprobar cuánto has aprendido. Tienes un
+          tiempo límite por pregunta, así que ¡concéntrate!
+        </p>
+
+        <div class="quiz fade-in" id="quizContainer">
+          <!-- Pantalla de inicio del quiz -->
+          <div class="quiz__intro" id="quizIntro">
+            <div class="quiz__intro-icon">🐍</div>
+            <h3 class="h3">¿Listo para el reto?</h3>
+            <p>15 preguntas de opción múltiple · 30 segundos por pregunta</p>
+            <button class="btn btn--primary" id="quizStartBtn">Comenzar Quiz</button>
+          </div>
+
+          <!-- Pantalla de pregunta -->
+          <div class="quiz__question" id="quizQuestionScreen" hidden>
+            <div class="quiz__top">
+              <div class="quiz__progress-bar">
+                <div class="quiz__progress-fill" id="quizProgressFill"></div>
+              </div>
+              <div class="quiz__meta">
+                <span id="quizCounter">Pregunta 1 de 15</span>
+                <span class="quiz__timer" id="quizTimer">⏱ 30</span>
+              </div>
+            </div>
+            <h3 class="quiz__question-text" id="quizQuestionText"></h3>
+            <div class="quiz__options" id="quizOptions"></div>
+          </div>
+
+          <!-- Pantalla de resultados -->
+          <div class="quiz__results" id="quizResultsScreen" hidden>
+            <div class="quiz__results-icon" id="quizResultsIcon">🏆</div>
+            <h3 class="h3">¡Quiz completado!</h3>
+            <p class="quiz__score" id="quizScore">0 / 15</p>
+            <p class="quiz__percentage" id="quizPercentage">0%</p>
+            <p class="quiz__message" id="quizMessage"></p>
+            <button class="btn btn--primary" id="quizRetryBtn">Volver a intentarlo</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACTO ============ -->
+    <section class="section" id="contacto">
+      <div class="container container--narrow text-center">
+        <p class="eyebrow">¿Tienes dudas?</p>
+        <h2 class="section__title">Contacto</h2>
+        <p class="section__lead">
+          Este curso es un punto de partida. Si tienes preguntas sobre alguna lección,
+          escríbenos y con gusto te ayudamos a seguir aprendiendo.
+        </p>
+        <div class="contact-card fade-in">
+          <p>📧 <strong>zaratedylan03@gmail.com</strong></p>
+          <p>💬 para mas cursos te dejo mi pagina de github</p>
+           </p> https://github.com/Dylan0-jpg</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="footer__logo">🐍</span>
+        <span class="footer__brand-text">Python<span class="nav__brand-accent">.curso</span></span>
+      </div>
+
+      <p class="footer__message">
+        "Aprender Python es el primer paso para crear grandes proyectos."
+      </p>
+
+      <div class="footer__social">
+        <a href="#" class="footer__social-link" aria-label="Facebook">📘</a>
+        <a href="#" class="footer__social-link" aria-label="Twitter / X">🐦</a>
+        <a href="#" class="footer__social-link" aria-label="Instagram">📷</a>
+        <a href="#" class="footer__social-link" aria-label="YouTube">▶️</a>
+        <a href="#" class="footer__social-link" aria-label="GitHub">💻</a>
+      </div>
+
+      <p class="footer__contact">zaratedylan03@gmail.com</p>
+      <p class="footer__copy">© 2026 Curso de Python desde Cero · Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Botón flotante para volver arriba -->
+  <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
